@@ -9,7 +9,7 @@
 		"updateUrl": "Nothing",
 		"authorList": ["ryoryo"],
 		"credits": "Many minecraft modders!",
-		"logoFile": "",
+		"logoFile": "assets/unsaddle/mod_logo.png",
 		"screenshots": [],
 		"dependencies": []
 	}
