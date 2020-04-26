@@ -1,8 +1,5 @@
 package ryoryo.unsaddle;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,8 +29,6 @@ public class Unsaddle
 
 	public static final String MOD_DEPENDENCIES = "required-after:forge@[14.23.5.2768,);";
 	public static final String MOD_ACCEPTED_MC_VERSIONS = "[1.12.2]";
-
-	public static final Logger LOGGER = LogManager.getLogger(Unsaddle.MOD_ID);
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
