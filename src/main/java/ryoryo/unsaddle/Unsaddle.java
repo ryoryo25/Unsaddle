@@ -17,8 +17,7 @@ import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod(modid = Unsaddle.MOD_ID, name = Unsaddle.MOD_NAME, version = Unsaddle.MOD_VERSION, dependencies = Unsaddle.MOD_DEPENDENCIES, acceptedMinecraftVersions = Unsaddle.MOD_ACCEPTED_MC_VERSIONS)
-public class Unsaddle
-{
+public class Unsaddle {
 	public static final String MOD_ID = "unsaddle";
 	public static final String MOD_NAME = "Unsaddle";
 
@@ -31,33 +30,27 @@ public class Unsaddle
 	public static final String MOD_ACCEPTED_MC_VERSIONS = "[1.12.2]";
 
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event)
-	{
+	public void postInit(FMLPostInitializationEvent event) {
 		MinecraftForge.EVENT_BUS.register(new Unsaddle());
 	}
 
 	@SubscribeEvent
-	public void removePigSaddle(PlayerInteractEvent.EntityInteract event)
-	{
+	public void removePigSaddle(PlayerInteractEvent.EntityInteract event) {
 		EntityPlayer player = event.getEntityPlayer();
 		Entity target = event.getTarget();
 		ItemStack held = event.getItemStack();
 		World world = event.getWorld();
 
-		if(player != null && target != null)
-		{
-			if(target instanceof EntityPig && player.isSneaking())
-			{
+		if(player != null && target != null) {
+			if(target instanceof EntityPig && player.isSneaking()) {
 				EntityPig pig = (EntityPig) target;
-				if(pig.getSaddled())
-				{
-					//to interrupt vanilla's function
+				if(pig.getSaddled()) {
+					// to interrupt vanilla's function
 					if(held.isItemEqual(new ItemStack(Items.SADDLE)))
 						event.setCanceled(true);
 
 					pig.world.playSound(player, pig.posX, pig.posY, pig.posZ, SoundEvents.ENTITY_PIG_SADDLE, SoundCategory.NEUTRAL, 0.5F, 1.0F);
-					if(!world.isRemote)
-					{
+					if(!world.isRemote) {
 						pig.dropItem(Items.SADDLE, 1);
 						pig.setSaddled(false);
 					}
